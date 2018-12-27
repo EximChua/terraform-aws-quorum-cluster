@@ -141,6 +141,11 @@ variable "use_efs" {
   default     = false
 }
 
+variable "geth_verbosity" {
+  description = "The verbosity level of the geth process as an integer from 1 to 5. 0=silent, 1=error, 2=warn, 3=info, 4=debug, 5=detail."
+  default = "2"
+}
+
 variable "ssh_ips" {
   description = "List of IP addresses allowed to SSH nodes in this network. If empty, will allow SSH from anywhere."
   default     = []
@@ -523,14 +528,14 @@ cron(05 13 ? * MON *) will trigger every MON at 1 05 pm GMT
 rate(3 mins) will trigger every 3 minutes
 rate(7 hours) will trigger every 7 hours
 DESCRIPTION
-  default     = "rate(4 hours)"
+  default     = "rate(4 days)"
 }
 
 variable "backup_enabled" {
   description = <<DESCRIPTION
 Enable backup of chain data.
 DESCRIPTION
-  default = "true"
+  default = "false"
 }
 
 variable "backup_lambda_ssh_user" {
